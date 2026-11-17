@@ -1,10 +1,11 @@
 [package]
 name = "taigaui"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
-description = "Taiga UI design components for Rust: builders that render styled, framework-agnostic HTML"
+description = "Taiga UI styled components for Rust - typed builders that render framework-agnostic HTML and CSS for axum, actix-web, rocket, SSR and static sites. Zero JavaScript. Buttons, inputs, tabs, alerts."
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/StarcevAlexander/taigaui"
+homepage = "https://starcevalexander.github.io/taigaui/"
 readme = "README.md"
 keywords = ["ui", "taiga", "html", "css", "components"]
 categories = ["web-programming", "gui"]

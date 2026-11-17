@@ -4,6 +4,8 @@ Taiga UI design components for Rust: typed builders that render styled, framewor
 
 No JS runtime, no framework lock-in. Works with axum, actix-web, rocket, static site generators, or plain string output. Checkboxes, radios, toggles, sliders and text fields are real `<input>` elements and stay interactive without JavaScript.
 
+**Siblings in the family** — same builder API, different design systems: [matui](https://crates.io/crates/matui) (Material Design 3) and [bootstyle](https://crates.io/crates/bootstyle) (Bootstrap 5).
+
 ![taigaui gallery](https://raw.githubusercontent.com/StarcevAlexander/taigaui/main/docs/screenshots/gallery-hero.png)
 
 *(Full-page gallery: [gallery-full.png](https://raw.githubusercontent.com/StarcevAlexander/taigaui/main/docs/screenshots/gallery-full.png))*
