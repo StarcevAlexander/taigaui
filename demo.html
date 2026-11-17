@@ -1,0 +1,160 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>taigaui gallery</title><style>
+:root {
+  --tui-primary: #526ed3;
+  --tui-primary-hover: #3d53c0;
+  --tui-on-primary: #ffffff;
+  --tui-secondary: #f0f1f7;
+  --tui-on-secondary: #3f4868;
+  --tui-surface: #ffffff;
+  --tui-bg: #f4f5fa;
+  --tui-on-surface: #171a2b;
+  --tui-on-surface-muted: #6f7691;
+  --tui-border: #d6dbe8;
+  --tui-success: #3dc98e;
+  --tui-warning: #ffab49;
+  --tui-danger: #e0575b;
+  --tui-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: var(--tui-font); font-size: 1rem; line-height: 1.5; color: var(--tui-on-surface); background: var(--tui-bg); }
+h1, h2, h3, h4, h5, h6 { margin: 0 0 0.5rem; font-weight: 500; }
+p { margin: 0 0 1rem; }
+
+.tui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--tui-font);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--tui-btn-bg, var(--tui-primary));
+  color: var(--tui-btn-fg, var(--tui-on-primary));
+  transition: background 0.15s ease, filter 0.15s ease;
+}
+.tui-btn:hover:not(:disabled) { background: var(--tui-btn-hover-bg, var(--tui-primary-hover)); filter: none; }
+.tui-btn:active:not(:disabled) { filter: brightness(0.92); }
+.tui-btn--secondary { background: var(--tui-secondary); color: var(--tui-on-secondary); --tui-btn-hover-bg: #e4e7f2; }
+.tui-btn--flat { background: transparent; color: var(--tui-primary); }
+.tui-btn--flat:hover:not(:disabled) { background: color-mix(in srgb, var(--tui-primary) 10%, transparent); --tui-btn-hover-bg: transparent; }
+.tui-btn--danger { background: var(--tui-danger); color: #fff; --tui-btn-hover-bg: #cf4a4e; }
+.tui-btn:focus-visible { outline: 2px solid color-mix(in srgb, var(--tui-primary) 50%, transparent); outline-offset: 2px; }
+.tui-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.tui-btn--round { width: 44px; height: 44px; padding: 0; border-radius: 100px; font-size: 1.25rem; }
+
+.tui-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-family: var(--tui-font);
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--tui-tag-bg, var(--tui-secondary));
+  color: var(--tui-tag-fg, var(--tui-on-secondary));
+}
+.tui-tag--primary { --tui-tag-bg: color-mix(in srgb, var(--tui-primary) 12%, white); --tui-tag-fg: var(--tui-primary); }
+.tui-tag--success { --tui-tag-bg: color-mix(in srgb, var(--tui-success) 14%, white); --tui-tag-fg: #1d8a5f; }
+.tui-tag--warning { --tui-tag-bg: color-mix(in srgb, var(--tui-warning) 16%, white); --tui-tag-fg: #a96a17; }
+.tui-tag--danger { --tui-tag-bg: color-mix(in srgb, var(--tui-danger) 14%, white); --tui-tag-fg: #b23f43; }
+
+.tui-card {
+  background: var(--tui-surface);
+  color: var(--tui-on-surface);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(23, 26, 43, 0.08);
+  font-family: var(--tui-font);
+}
+.tui-card__title { margin: 0 0 8px; font-size: 1.0625rem; font-weight: 500; }
+.tui-card__body { font-size: 0.875rem; line-height: 1.4rem; color: var(--tui-on-surface-muted); }
+
+.tui-input { display: grid; gap: 4px; max-width: 300px; font-family: var(--tui-font); }
+.tui-input__label { font-size: 0.8125rem; color: var(--tui-on-surface-muted); margin-bottom: 2px; }
+.tui-input__field {
+  padding: 10px 14px;
+  border: 1px solid var(--tui-border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.9375rem;
+  background: var(--tui-surface);
+  color: var(--tui-on-surface);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.tui-input__field:focus { border-color: var(--tui-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tui-primary) 18%, transparent); }
+.tui-input__field:disabled { opacity: 0.4; background: var(--tui-secondary); }
+.tui-textarea { resize: vertical; min-height: 90px; }
+
+.tui-checkbox { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--tui-font); font-size: 0.9375rem; position: relative; }
+.tui-checkbox input { position: absolute; opacity: 0; width: 0; height: 0; }
+.tui-checkbox__box { width: 20px; height: 20px; border: 2px solid var(--tui-border); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; }
+.tui-checkbox__box::after { content: ""; width: 10px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) scale(0); transition: transform 0.15s ease; }
+.tui-checkbox input:checked + .tui-checkbox__box { background: var(--tui-primary); border-color: var(--tui-primary); }
+.tui-checkbox input:checked + .tui-checkbox__box::after { transform: rotate(-45deg) scale(1); }
+.tui-checkbox input:disabled + .tui-checkbox__box { opacity: 0.4; }
+
+.tui-radio { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--tui-font); font-size: 0.9375rem; position: relative; }
+.tui-radio input { position: absolute; opacity: 0; width: 0; height: 0; }
+.tui-radio__circle { width: 20px; height: 20px; border: 2px solid var(--tui-border); border-radius: 100px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; }
+.tui-radio__circle::after { content: ""; width: 10px; height: 10px; border-radius: 100px; background: var(--tui-primary); transform: scale(0); transition: transform 0.15s ease; }
+.tui-radio input:checked + .tui-radio__circle { border-color: var(--tui-primary); }
+.tui-radio input:checked + .tui-radio__circle::after { transform: scale(1); }
+.tui-radio input:disabled + .tui-radio__circle { opacity: 0.4; }
+
+.tui-toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--tui-font); font-size: 0.9375rem; position: relative; }
+.tui-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+.tui-toggle__track { width: 36px; height: 20px; border-radius: 100px; background: var(--tui-border); display: inline-flex; align-items: center; padding: 2px; transition: all 0.2s ease; }
+.tui-toggle__thumb { width: 16px; height: 16px; border-radius: 100px; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); transition: all 0.2s ease; }
+.tui-toggle input:checked + .tui-toggle__track { background: var(--tui-primary); }
+.tui-toggle input:checked + .tui-toggle__track .tui-toggle__thumb { transform: translateX(16px); }
+.tui-toggle input:disabled + .tui-toggle__track { opacity: 0.4; }
+
+.tui-slider { appearance: none; width: 240px; height: 4px; border-radius: 100px; background: linear-gradient(to right, var(--tui-primary) var(--tui-slider-value, 50%), var(--tui-secondary) var(--tui-slider-value, 50%)); outline: none; cursor: pointer; }
+.tui-slider::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px; border-radius: 100px; background: var(--tui-primary); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+.tui-slider::-moz-range-thumb { width: 16px; height: 16px; border-radius: 100px; background: var(--tui-primary); border: 2px solid #fff; }
+
+.tui-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--tui-border); font-family: var(--tui-font); }
+.tui-tabs__item { padding: 10px 18px; border: none; background: none; color: var(--tui-on-surface-muted); font-size: 0.9375rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tui-tabs__item:hover { color: var(--tui-on-surface); }
+.tui-tabs__item--active { color: var(--tui-primary); border-bottom-color: var(--tui-primary); }
+
+.tui-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-family: var(--tui-font);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  background: var(--tui-alert-bg, var(--tui-secondary));
+  color: var(--tui-alert-fg, var(--tui-on-secondary));
+}
+.tui-alert--success { --tui-alert-bg: color-mix(in srgb, var(--tui-success) 12%, white); --tui-alert-fg: #1d8a5f; }
+.tui-alert--warning { --tui-alert-bg: color-mix(in srgb, var(--tui-warning) 14%, white); --tui-alert-fg: #a96a17; }
+.tui-alert--danger { --tui-alert-bg: color-mix(in srgb, var(--tui-danger) 12%, white); --tui-alert-fg: #b23f43; }
+
+.tui-progress { width: 240px; height: 6px; border-radius: 100px; background: var(--tui-secondary); overflow: hidden; }
+.tui-progress__bar { height: 100%; border-radius: 100px; background: var(--tui-primary); }
+.tui-progress-ring { width: 48px; height: 48px; border-radius: 100px; border: 4px solid var(--tui-secondary); border-top-color: var(--tui-primary); animation: tui-spin 0.9s linear infinite; }
+@keyframes tui-spin { to { transform: rotate(360deg); } }
+
+.tui-accordion__item { background: var(--tui-surface); border-radius: 10px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(23, 26, 43, 0.06); overflow: hidden; }
+.tui-accordion__button { width: 100%; padding: 14px 18px; border: none; background: none; font: inherit; font-weight: 500; color: var(--tui-on-surface); text-align: left; cursor: pointer; display: flex; justify-content: space-between; }
+.tui-accordion__button::after { content: "▾"; color: var(--tui-on-surface-muted); }
+.tui-accordion__button--open::after { content: "▴"; }
+.tui-accordion__collapse:not(.show) { display: none; }
+.tui-accordion__body { padding: 0 18px 16px; font-size: 0.875rem; color: var(--tui-on-surface-muted); }
+
+.tui-tooltip { position: relative; display: inline-flex; cursor: default; }
+.tui-tooltip__bubble { visibility: hidden; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); padding: 8px 12px; border-radius: 8px; background: var(--tui-on-surface); color: var(--tui-bg); font-family: var(--tui-font); font-size: 0.75rem; white-space: nowrap; z-index: 9; }
+.tui-tooltip:hover .tui-tooltip__bubble { visibility: visible; }
+body { margin: 0; background: var(--tui-bg); }.demo { padding: 32px 40px 80px; display: grid; gap: 20px; max-width: 720px; }.demo-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }</style></head><body><div class="demo"><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Buttons</p><div class="demo-row"><button class="tui-btn" type="button">Primary</button><button class="tui-btn tui-btn--secondary" type="button">Secondary</button><button class="tui-btn tui-btn--flat" type="button">Flat</button><button class="tui-btn tui-btn--danger" type="button">Delete</button><button class="tui-btn tui-btn--round" type="button">+</button><button class="tui-btn" type="button" disabled>Disabled</button></div><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Tags</p><div class="demo-row"><span class="tui-tag">neutral</span><span class="tui-tag tui-tag--primary">primary</span><span class="tui-tag tui-tag--success">success</span><span class="tui-tag tui-tag--warning">warning</span><span class="tui-tag tui-tag--danger">danger</span></div><div class="tui-card"><h3 class="tui-card__title">Taiga UI for Rust</h3><div class="tui-card__body">Typed builders rendering framework-agnostic HTML in the Taiga design style.</div></div><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Inputs</p><div class="tui-input"><label class="tui-input__label">Email</label><input class="tui-input__field" type="text" name="email" placeholder="name@example.com"></div><div class="tui-input"><label class="tui-input__label">Comment</label><textarea class="tui-input__field tui-textarea" rows="3" placeholder="Type here..."></textarea></div><div class="demo-row"><label class="tui-checkbox"><input type="checkbox" checked><span class="tui-checkbox__box"></span>Remember me</label><label class="tui-radio"><input type="radio" name="size" value="m" checked><span class="tui-radio__circle"></span>Medium</label><label class="tui-toggle"><input type="checkbox" checked><span class="tui-toggle__track"><span class="tui-toggle__thumb"></span></span>Dark mode</label></div><div class="demo-row"><input type="range" class="tui-slider" name="volume" min="0" max="100" value="35" style="--tui-slider-value: 35%;"><span class="tui-tooltip"><button class="tui-btn tui-btn--flat" type="button">Hover me</button><span class="tui-tooltip__bubble">Pure CSS tooltip</span></span></div><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Tabs</p><div class="tui-tabs" role="tablist"><button class="tui-tabs__item tui-tabs__item--active" type="button" role="tab" aria-selected="true">Overview</button><button class="tui-tabs__item" type="button" role="tab" aria-selected="false">Specs</button><button class="tui-tabs__item" type="button" role="tab" aria-selected="false">Reviews</button></div><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Alerts</p><div class="tui-alert" role="alert">Neutral notice</div><div class="tui-alert tui-alert--success" role="alert">Everything works!</div><div class="tui-alert tui-alert--warning" role="alert">Careful there.</div><div class="tui-alert tui-alert--danger" role="alert">Something broke.</div><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Progress</p><div class="demo-row"><div class="tui-progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="tui-progress__bar" style="width: 65%;"></div></div><div class="tui-progress-ring" role="status" aria-label="loading"></div></div><p class="tui-input__label" style="text-transform: uppercase; letter-spacing: 0.5px;">Accordion</p><div class="tui-accordion__item"><button class="tui-accordion__button tui-accordion__button--open" type="button">What is taigaui?</button><div class="tui-accordion__collapse show"><div class="tui-accordion__body">A Taiga UI styled component set for Rust.</div></div></div><div class="tui-accordion__item"><button class="tui-accordion__button" type="button">Do I need JavaScript?</button><div class="tui-accordion__collapse"><div class="tui-accordion__body">No. Native interactive elements only.</div></div></div></div></body></html>

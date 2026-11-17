@@ -1,0 +1,12 @@
+[package]
+name = "taigaui"
+version = "0.1.0"
+edition = "2024"
+description = "Taiga UI design components for Rust: builders that render styled, framework-agnostic HTML"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/StarcevAlexander/taigaui"
+readme = "README.md"
+keywords = ["ui", "taiga", "html", "css", "components"]
+categories = ["web-programming", "gui"]
+
+[dependencies]
